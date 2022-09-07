@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import axios from 'axios';
+
 const api = {
   key: "0f36f7e65b9c397f2be522bd9c69129f",
   base: "https://api.openweathermap.org/data/2.5/"
@@ -7,6 +10,18 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  const [pic, setPic] = useState('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701714587.jpg');
+
+
+  async function onSearchSubmit(term) {
+    await axios.get('https://api.unsplash.com/search/photos', {
+      params: { query: term },
+      headers: {
+        Authorization:
+          'Client-ID _JUnQlK7q2Vl48y-SkHNjfRK9EAkEsgm6qyq-eVqvX0',
+      }
+    }).then(response => setPic(response.data.results[0].urls.full));
+}
 
   const search = evt => {
     if (evt.key === "Enter") {
@@ -17,6 +32,7 @@ function App() {
           setQuery('');
           console.log(result);
           console.log(query)
+          onSearchSubmit(query);
         });
     }
   }
@@ -30,7 +46,11 @@ function App() {
     return `${day} ${date} ${month} ${year}`
   }
   return (
-    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16) ? 'app warm' : 'app') : 'app'}>
+    <div style={{
+      backgroundImage: `url(${pic})`,
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed'
+  }}>
       <main>
         <div className="search-box">
           <input 
