@@ -8,17 +8,6 @@
     font-family: 'Montserrat', sans-serif;
   }
   
-  .app {
-    background-image: url('./assets/winter.jpeg');
-    background-size: cover;
-    background-position: bottom;
-    transition: 0.4 ease;
-  }
-  
-  .app.warm {
-    background-image: url('./assets/summer.webp');
-  }
-  
   main {
     min-height: 100vh;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
