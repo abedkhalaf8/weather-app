@@ -55,7 +55,7 @@ function Homepage() {
       backgroundAttachment: 'fixed'
   }}>
       <main>
-        <Search />
+        {/* <Search /> */}
 
 
         <div className="search-box">
