@@ -2,7 +2,6 @@ import './homepage.css';
 
 import React, { useState } from 'react';
 
-import Search from './search/search';
 import axios from 'axios';
 
 const api = {
