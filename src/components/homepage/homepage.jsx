@@ -23,9 +23,11 @@ function Homepage() {
         Authorization:
           'Client-ID _JUnQlK7q2Vl48y-SkHNjfRK9EAkEsgm6qyq-eVqvX0',
       }
-    }).then(response => setPic(response.data.results[0].urls.full));
+    }).then(response => setPic(response.data.results[randomNum()].urls.full));
+}         
+function randomNum () {
+ return  Math.floor(Math.random() * 10);
 }
-
   const search = evt => {
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -55,7 +57,7 @@ function Homepage() {
       backgroundAttachment: 'fixed'
   }}>
       <main>
-        <Search />
+        {/* <Search /> */}
 
 
         <div className="search-box">
